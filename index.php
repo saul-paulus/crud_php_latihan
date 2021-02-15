@@ -4,8 +4,14 @@ include('connection.php');
 
 // Ambil data dari tabel biodata
 $resQuery = mysqli_query($db_conn, "SELECT * FROM biodata");
+
+// ambil data dari $resQuery
 $resData = mysqli_fetch_all($resQuery, MYSQLI_ASSOC);
 
+// jika error
+if (!$resQuery) {
+    echo mysqli_error($db_conn);
+};
 
 
 ?>

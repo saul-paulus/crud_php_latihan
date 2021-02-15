@@ -9,7 +9,7 @@ $db_namaDb = 'mhs_db';
 // Membuat koneksi ke databases
 $db_conn = mysqli_connect($db_server, $db_user, $db_password, $db_namaDb);
 
-// Memeriksa apakah koneksi telah terhubung
+// Memeriksa apakah koneksi telah terhubung / gagal
 if (!$db_conn) {
-    echo exit("database tidak terhubung " . mysqli_connect_error($db_conn));
+    die("koneksi gagal:" . mysqli_connect_error());
 }
