@@ -1,8 +1,8 @@
 <?php
 
-include('connection.php');
+require 'connection.php';
 
-// Ambil data dari tabel biodata
+//Ambil data dari tabel biodata
 $resQuery = mysqli_query($db_conn, "SELECT * FROM biodata");
 
 // ambil data dari $resQuery
@@ -10,10 +10,8 @@ $resData = mysqli_fetch_all($resQuery, MYSQLI_ASSOC);
 
 // jika error
 if (!$resQuery) {
-    echo mysqli_error($db_conn);
+    die("pengambilan data gagal:" . mysqli_error($db_conn));
 };
-
-
 ?>
 
 
@@ -46,14 +44,15 @@ if (!$resQuery) {
                 <th>Jenis Kelamin</th>
                 <th>Aksi</th>
             </tr>
-            <?php foreach ($resData as $rd) : ?>
+            <?php foreach ($resData as $dataMhs) : ?>
             <tr>
                 <td></td>
-                <td><?= $rd['nama']; ?></td>
-                <td><?= $rd['alamat']; ?> </td>
-                <td><?= $rd['umur']; ?></td>
-                <td><?= $rd['jenis_kelamin']; ?></td>
-                <td><a href="" class="btn btn-warning">edit</a> <a href="" class="btn btn-danger">hapus</a></td>
+                <td><?= $dataMhs['nama']; ?></td>
+                <td><?= $dataMhs['alamat']; ?> </td>
+                <td><?= $dataMhs['umur']; ?></td>
+                <td><?= $dataMhs['jenis_kelamin']; ?></td>
+                <td><a href="updateData.php" class="btn btn-warning">edit</a> <a href=""
+                        class="btn btn-danger">hapus</a></td>
             </tr>
             <?php endforeach; ?>
         </table>

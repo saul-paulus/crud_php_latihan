@@ -1,22 +1,3 @@
-<?php
-include('connection.php');
-
-$nama = $_POST['nama'];
-$alamat = $_POST['alamat'];
-$umur = $_POST['umur'];
-$jenisKelamin = $_POST['jenisKelamin'];
-
-$insertData = mysqli_query($db_conn, "INSERT INTO biodata VALUES(NULL,'$nama','$alamat',$umur,'$jenisKelamin')");
-
-if ($insertData) {
-    header('location:index.php');
-} else {
-    echo mysqli_error($insertData);
-}
-?>
-
-
-
 <!doctype html>
 <html lang="en">
 
@@ -29,18 +10,22 @@ if ($insertData) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <title>Data Mahasiswa</title>
+    <title>Ubah Data</title>
 </head>
 
 <body>
 
     <div class="container col-4">
 
-        <h1 class=" p-3 ">Form Tambah Data</h1>
+        <h1 class=" p-3 ">Form Ubah Data</h1>
 
 
 
         <form action="" method="POST">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="" class="form-control" id="nama" name="id" placeholder="id....">
+            </div>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
                 <input type="" class="form-control" id="nama" name="nama" placeholder="masukan nama anda....">
