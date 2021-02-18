@@ -1,52 +1,32 @@
 <?php
-
 require 'connection.php';
 
+$cariData = $_GET['keyword'];
 
-//Ambil data dari tabel biodata
-$resQuery = mysqli_query($db_conn, "SELECT * FROM biodata");
+$resQuery = mysqli_query($db_conn, "SELECT * FROM biodata WHERE nama = '$cariData'");
 
-// ambil data dari $resQuery
 $resData = mysqli_fetch_all($resQuery, MYSQLI_ASSOC);
-
-// jika error
-if (!$resQuery) {
-
-    die("pengambilan data gagal:" . mysqli_error($db_conn));
-};
 ?>
 
-
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <title>Data Mahasiswa</title>
+    <title>Pencarian Data</title>
 </head>
 
 <body>
 
     <div class="container">
         <h1>Data Mahasiswa Fisika</h1>
-
-        <!-- Untuk Pencarian -->
-        <form action="cariData.php" method="GET">
-            <div class="mb-3">
-                <label for="cari" class="form-label">Pencarian</label>
-                <input type="" class="form-control" id="cari" name="keyword" placeholder="masukan nama......">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-
         <!-- Untuk tabel view data -->
         <table class="table table-striped">
             <tr>
@@ -72,6 +52,7 @@ if (!$resQuery) {
 
         <!-- Tombol untuk tambah data -->
         <a type="button" class="btn btn-primary" href="insertData.php">Tambah Data</a>
+        <a type="button" class="btn btn-warning" href="index.php">Kembali</a>
     </div>
 
 
