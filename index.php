@@ -35,6 +35,16 @@ if (!$resQuery) {
     <div class="container">
         <h1>Data Mahasiswa Fisika</h1>
 
+        <form action="cariData.php" method="GET">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Pencarian</label>
+                <input type="" class="form-control" id="nama" name="nama"
+                    placeholder="masukan keyboard pencarion......">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+
         <table class="table table-striped">
             <tr>
                 <th>No</th>
@@ -51,8 +61,8 @@ if (!$resQuery) {
                 <td><?= $dataMhs['alamat']; ?> </td>
                 <td><?= $dataMhs['umur']; ?></td>
                 <td><?= $dataMhs['jenis_kelamin']; ?></td>
-                <td><a href="updateData.php" class="btn btn-warning">edit</a> <a href=""
-                        class="btn btn-danger">hapus</a></td>
+                <td><a href="editData.php?id=<?= $dataMhs['id']; ?>" class="btn btn-warning">edit</a> <a
+                        href="hapusData.php?id=<?= $dataMhs['id']; ?>" class="btn btn-danger">hapus</a></td>
             </tr>
             <?php endforeach; ?>
         </table>
